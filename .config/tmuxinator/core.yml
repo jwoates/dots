@@ -1,0 +1,17 @@
+# /Users/joate3/.config/tmuxinator/core.yml
+
+name: core
+root: ~/Projects/infrastructure/
+pre_window: docker-compose up -d
+on_project_stop: dkill
+
+windows:
+  - editor: vim
+  - logs: docker-compose logs -f
+  - docker:
+      layout: main-vertical
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      panes:
+        - docker exec -it accounts /bin/sh -c "[ -e /bin/bash ] && /bin/bash || /bin/sh"
+        - docker-compose ps
