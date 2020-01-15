@@ -44,3 +44,11 @@ dump.rdb
 # Zarr #
 ########
 __init__.py
+# files that should never be in a repo
+###############
+.env
+.env~
+.env*
+vim/backups/*
+vim/tmp/*
+
