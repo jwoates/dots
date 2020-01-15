@@ -51,4 +51,5 @@ __init__.py
 .env*
 vim/backups/*
 vim/tmp/*
-
+# vi
+####
