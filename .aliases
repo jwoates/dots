@@ -16,17 +16,32 @@ alias mux="tmuxinator"
 alias dkill="docker-compose down -v"
 alias dc="docker-compose"
 
+#
 # Shortcuts
+#
 alias be="bundle exec"
-alias template="/home/allibubba/Projects/rails-composer/composer.rb"
-alias d="cd ~/Documents/Dropbox"
 alias p="cd ~/Projects"
-alias s="cd ~/Servers"
-alias a="cd ~/Applications"
-alias android="/home/allibubba/Applications/android-studio/bin/./studio.sh"
 alias rs="bundle exec rails s"
 alias rc="bundle exec rails console"
 alias seed_dump="rake db:seed:dump WITH_ID=1"
+alias template="$HOME/Projects/rails-composer/composer.rb"
+alias p="cd ~/Projects"
+alias t="cd ~/Tasks"
+alias g="git"
+alias vi="nvim"
+#alias mysql="/usr/local/mysql/bin/mysql"
+alias pad="padrino"
+alias pp="bash $HOME/Tasks/Nightly-Commit/forcePush.sh"
+alias pstart="padrino start -p3000"
+alias shotty="shotgun config.ru"
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true"
+
+#
+# Redis
+#
+alias es="redis-server"
+alias ec="redis-cli"
 
 #
 # GIT commands
@@ -40,7 +55,7 @@ alias gdiff="git diff --name-only --diff-filter=U"
 
 #compdef '_dispatch git checkout' gc
 
-function gc(){
+function gco(){
 	git checkout $1 $2
 }
 
@@ -82,27 +97,6 @@ alias server="open http://localhost:8080/ && python -m SimpleHTTPServer 8080"
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
-
-# Redis
-alias es="redis-server"
-alias ec="redis-cli"
-
-# Shortcuts
-alias template="/home/allibubba/Projects/rails-composer/composer.rb"
-alias d="cd ~/Documents/Dropbox"
-alias p="cd ~/Projects"
-alias t="cd ~/Tasks"
-alias g="git"
-alias vi="nvim"
-#alias mysql="/usr/local/mysql/bin/mysql"
-
-alias pad="padrino"
-alias pp="bash $HOME/Tasks/Nightly-Commit/forcePush.sh"
-
-alias pstart="padrino start -p3000"
-alias shotty="shotgun config.ru"
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true"
 
 # File size
 alias fs="stat -f \"%z bytes\""
