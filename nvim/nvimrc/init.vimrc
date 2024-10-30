@@ -1,14 +1,9 @@
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
-" ES6 support
-Plug 'isruslan/vim-es6'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
 " Autocomplete
 " Plug 'valloric/youcompleteme'
 
 " Deoplete configuration
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
 
 " Change Surround

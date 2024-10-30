@@ -8,6 +8,8 @@
 
 # clear terminal
 alias cls="clear"
+alias tree="tree -I node_modules"
+alias bastion="bastion.rb"
 
 # Tmuxinator
 alias mux="tmuxinator"
@@ -15,23 +17,29 @@ alias mux="tmuxinator"
 # Docker
 alias dkill="docker-compose down -v"
 alias dc="docker-compose"
+alias dcps="docker-compose ps"
 
+# run aws command in container, need to pass in --profile flag too
+# alias aws="docker run --rm -it -v $HOME/.aws:/root/.aws -v $PWD:/aws:rw amazon/aws-cli"
+# alias cdk="docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/opt/app contino/aws-cdk bash"
+
+alias cdk="docker run --rm -it -v $HOME/.aws:/root/.aws -v $(pwd):/aws:rw allibubba/cdk"
 #
 # Shortcuts
 #
 alias be="bundle exec"
-alias p="cd ~/Projects"
 alias rs="bundle exec rails s"
 alias rc="bundle exec rails console"
 alias seed_dump="rake db:seed:dump WITH_ID=1"
 alias template="$HOME/Projects/rails-composer/composer.rb"
 alias p="cd ~/Projects"
-alias t="cd ~/Tasks"
+alias s="cd ~/Sandbox"
+alias t="cd ~/Tools"
 alias g="git"
 alias vi="nvim"
 #alias mysql="/usr/local/mysql/bin/mysql"
 alias pad="padrino"
-alias pp="bash $HOME/Tasks/Nightly-Commit/forcePush.sh"
+#alias pp="bash $HOME/Tasks/Nightly-Commit/forcePush.sh"
 alias pstart="padrino start -p3000"
 alias shotty="shotgun config.ru"
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false"
@@ -52,6 +60,9 @@ alias gc="git commit -av"
 alias gu="git add -u"
 alias gp="git push"
 alias gdiff="git diff --name-only --diff-filter=U"
+alias gl="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias gb="git branch --sort=-committerdate"
+alias branch="branch --sort=-committerdate"
 
 #compdef '_dispatch git checkout' gc
 
@@ -149,10 +160,11 @@ alias rake="noglob rake"
 # Shortcuts
 alias d="cd ~/Documents/Dropbox"
 alias p="cd ~/Projects"
-alias t="cd ~/Tasks"
 alias u="cd ~/Utilities"
 alias rs="rails s"
 alias rc="rails c"
 alias seed_dump="rake db:seed:dump WITH_ID=1"
 
-
+# grep without node modules by default
+alias grep="grep -ri --exclude-dir=node_modules"
+alias pp="cd ~/Projects/fusion-store"

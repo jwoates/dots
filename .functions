@@ -2,17 +2,28 @@
 # function md() {
 #   mkdir -p "$@" && cd "$@"
 # }
+profit() {
+  tiv ~/money.jpeg
+}
+
+logx() {
+  for FILE in *.log; do cat /dev/null >! $FILE; done
+}
 splitCsv() {
   HEADER=$(head -1 $1)
     if [ -n "$2" ]; then
       CHUNK=$2
-  else 
+  else
   CHUNK=50000
   fi
     tail -n +2 $1 | split -l $CHUNK - $1_split_
     for i in $1_split_*; do
       echo -e "$HEADER\n$(cat $i)" > $i
     done
+}
+
+function dcit {
+  docker compose exec -it $1 bash
 }
 
 function cls() {
@@ -54,7 +65,7 @@ function bundlit {
     no ) bundle install; break;;
     cancel ) break;;
     esac
-      done  
+      done
 }
 
 
@@ -66,4 +77,28 @@ function unzip {
 function port {
   echo "returning pid of what is running on port: $1";
   lsof -t -i:$1
+}
+
+# Docker commands
+## Take down all running containers (releative to docker-compose)
+dcnix () {
+    echo "💀 kill containers ..."
+    docker-compose kill $1 && docker-compose rm -f $1
+}
+
+# Clean up exited containers, networks & volumes
+dccl () {
+  echo "🧹 Removing exited containers ..."
+  docker system prune -f
+  echo "Removing unused networks..."
+  docker network prune -f
+  echo "Removing unused volumes..."
+  docker volume prune -f
+  echo "... all done."
+}
+
+# deletes all docker images on the system
+dcnuke () {
+  echo "☢️  Removing all images ..."
+  docker rmi $(docker images -a -q)
 }
